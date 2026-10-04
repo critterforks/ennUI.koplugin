@@ -1,15 +1,20 @@
-# ennUI
+# ennUI 1.0
 
-A minimal, text-based home screen for KOReader. Weighing in at only 144kb uncompressed, my goal was to make a beautiful, nearly infinitely customizable homescreen that was as lightweight and resource efficient as possible.
-
-<img width="250" height="*" alt="FileManager_2026-10-04_144015" src="https://github.com/user-attachments/assets/69381b7c-c4a4-490f-9307-6c1c87409cee" />
-<img width="250" height="*" alt="FileManager_2026-10-04_143851" src="https://github.com/user-attachments/assets/c44cf933-fee4-431a-9ff7-09db95dceb38" />
-<img width="250" height="*" alt="FileManager_2026-10-04_143939" src="https://github.com/user-attachments/assets/378cb20a-3a12-4e6e-8868-9ad1290b518f" />
-<img width="250" height="*" alt="FileManager_2026-10-04_143751" src="https://github.com/user-attachments/assets/fb826f22-7eac-4524-9c0a-43451f244f0f" />
+A minimal, text-based home screen for KOReader.
 
 ## Install
 Copy the `ennui.koplugin` folder into KOReader's `plugins` folder (replacing your
-current version) and restart KOReader. Disable or uninstall any other home screen plugin before using ennUI. 
+current version) and restart KOReader. Disable any other home screen plugin (for
+example Simple UI) while using ennUI. Your existing settings carry over.
+
+## What's new in 1.0
+- Renamed throughout to **ennUI** (the capitalization you'll see everywhere
+  it's displayed — toasts, menu titles, the plugin listing).
+- The Plugin entries "Max entries per page" setting now reads
+  **"Auto-fit to page"** instead of "No limit" when no cap is set.
+- KOReader's top menu (Tools) now has a single **"ennUI"** entry, which takes
+  you to the home screen. The separate "ennUI settings" entry is gone — swipe
+  up from the bottom of the home screen for Settings, as in the last version.
 
 ## Use
 - Swipe up from the bottom edge of the home screen, any time, to open ennUI
@@ -41,3 +46,25 @@ current version) and restart KOReader. Disable or uninstall any other home scree
 Two toasts, each shown once, ever:
 - Right after your first setup, a reminder to swipe up for Settings.
 - The first time you turn weather on, a reminder that tapping it refreshes it.
+
+## About the file-browser flash
+ennUI builds its screen the moment a book closes and reacts the instant
+KOReader shows the file browser, when that signal is available, so the switch
+back is close to instant on most setups. This is working within what a plugin
+can do without changing how KOReader's own file browser gets shown, so it
+isn't an absolute guarantee in every situation.
+
+## Safety
+- Errors while building or showing a screen leave the normal file browser in place.
+- The loading splash (used only on the slower fallback path) closes itself
+  after 5 seconds if nothing replaces it.
+- If a start never finished drawing the home screen, the next start skips it once.
+- To remove ennUI: delete the `ennui.koplugin` folder (and `settings/ennui.lua`).
+
+## Known limits
+- Very high outline thickness still means more paint work than none at all —
+  it's linear in thickness, not free.
+- White text will be invisible against the default blank background unless
+  paired with an outline or a dark wallpaper.
+- The outline/drop shadow effects won't apply to a character your font draws
+  as a picture-style glyph rather than a plain shape.
